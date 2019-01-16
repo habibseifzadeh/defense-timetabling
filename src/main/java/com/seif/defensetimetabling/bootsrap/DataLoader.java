@@ -52,28 +52,43 @@ public class DataLoader implements CommandLineRunner {
 
         DefensesInterval defensesInterval = semesterRepository
                 .findByName("971").get().getDefensesIntervals().iterator().next();
-        UnitOfTime defenseUnitOfTime = unitOfTimeRepository
+        UnitOfTime defenseUnitOfTime1 = unitOfTimeRepository
                 .findByDescriptionAndDefensesInterval("8-9:30", defensesInterval).get();
+        UnitOfTime defenseUnitOfTime2 = unitOfTimeRepository
+                .findByDescriptionAndDefensesInterval("9:30-11", defensesInterval).get();
 
         Student yaghoubi = studentRepository.findByLastNameAndFirstName("yaghoubi", "razieh").get();
+        Student salehpour = studentRepository.findByLastNameAndFirstName("salehpour", "elahe").get();
 
         Professor nadimi = professorRepository.findByLastNameAndFirstName("nadimi", "mohammad").get();
         Professor seifzadeh = professorRepository.findByLastNameAndFirstName("seifzadeh", "habib").get();
         Professor naderi = professorRepository.findByLastNameAndFirstName("naderi", "mohammad").get();
         Professor fekri = professorRepository.findByLastNameAndFirstName("fekri", "shervan").get();
 
-        DefenseSession defenseSession = new DefenseSession();
-        defenseSession.setDate(LocalDate.of(2019, 1, 14));
+        DefenseSession defenseSession1 = new DefenseSession();
+        defenseSession1.setDate(LocalDate.of(2019, 1, 14));
 
-        defenseSession.addStudent(yaghoubi);
-        defenseSession.setTitle("Use text mining to suggest reviewers for a defense session");
-        defenseSession.addSupervisor(seifzadeh);
-        defenseSession.addExternalReviewer(naderi);
-        defenseSession.addInternalReviewer(nadimi);
-        defenseSession.addCoordinator(fekri);
-        defenseSession.addUnitOfTime(defenseUnitOfTime);
+        DefenseSession defenseSession2 = new DefenseSession();
+        defenseSession2.setDate(LocalDate.of(2019, 1, 14));
 
-        defenseSessionRepository.save(defenseSession);
+        defenseSession1.addStudent(salehpour);
+        defenseSession1.setTitle("Dynamic updating of PHP applications");
+        defenseSession1.addSupervisor(seifzadeh);
+        defenseSession1.addExternalReviewer(fekri);
+        defenseSession1.addInternalReviewer(naderi);
+        defenseSession1.addCoordinator(nadimi);
+        defenseSession1.addUnitOfTime(defenseUnitOfTime1);
+
+        defenseSession2.addStudent(yaghoubi);
+        defenseSession2.setTitle("Use text mining to suggest reviewers for a defense session");
+        defenseSession2.addSupervisor(seifzadeh);
+        defenseSession2.addExternalReviewer(naderi);
+        defenseSession2.addInternalReviewer(nadimi);
+        defenseSession2.addCoordinator(fekri);
+        defenseSession2.addUnitOfTime(defenseUnitOfTime2);
+
+        defenseSessionRepository.save(defenseSession1);
+        defenseSessionRepository.save(defenseSession2);
 
         log.debug("defense sessions loaded successfully...");
     }
@@ -114,6 +129,10 @@ public class DataLoader implements CommandLineRunner {
         yaghoubi.setFirstName("razieh");
         yaghoubi.setLastName("yaghoubi");
 
+        Student salehpour = new Student();
+        salehpour.setFirstName("elahe");
+        salehpour.setLastName("salehpour");
+
         seifzadeh.addLeaveTime(leaveTime);
 
         preferencesRepository.save(preferences);
@@ -123,6 +142,7 @@ public class DataLoader implements CommandLineRunner {
         professorRepository.save(nadimi);
         leaveTimeRepository.save(leaveTime);
         studentRepository.save(yaghoubi);
+        studentRepository.save(salehpour);
 
         log.debug("professors loaded successfully...");
 

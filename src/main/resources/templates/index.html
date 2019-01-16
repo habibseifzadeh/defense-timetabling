@@ -1,7 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout">
+<html lang="en" th:replace="fragments/layout :: layout" xmlns:th="http://www.thymeleaf.org">
 
 <div th:fragment="content">
-    <h1>This is the main page of the site...</h1>
-
+    <div class="card">
+        <div class="card-header bg-primary"><h3>Defense sessions overall time table<h3></h3></div>
+        <div class="card-body">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>Time</th>
+            <th>Student</th>
+            <th>Supervisor</th>
+            <th>Advisor</th>
+            <th>Reviewer 1</th>
+            <th>Reviewer 2</th>
+            <th>Coordinator</th>
+        </thead>
+        <tbody>
+        <th:block th:each="defense : ${defenseSessions}">
+            <tr>
+                <td th:text="${defense.time}">Time</td>
+                <td th:text="${defense.studentFirstName} + ' ' + ${defense.studentLastName}">Ali Rezaie</td>
+                <td th:text="${defense.supervisorFirstName} + ' ' + ${defense.supervisorLastName}">Mohammad Naderi</td>
+                <td th:text="${defense.advisorFirstName} + ' ' + ${defense.advisorLastName}">Advisor</td>
+                <td th:text="${defense.internalReviewerFirstName} + ' ' + ${defense.internalReviewerLastName}">Reviewer 1</td>
+                <td th:text="${defense.externalReviewerFirstName} + ' ' + ${defense.externalReviewerLastName}">Reviewer 2</td>
+                <td th:text="${defense.coordinatorFirstName} + ' ' + ${defense.coordinatorLastName}">Coordinator</td>
+            </tr>
+            <tr>
+                <td colspan="7" style="text-align: center" th:text="${defense.title}">Title</td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+        </div>
+    </div>
 </div>

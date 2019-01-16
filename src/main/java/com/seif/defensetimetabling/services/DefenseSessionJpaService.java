@@ -3,10 +3,12 @@ package com.seif.defensetimetabling.services;
 import com.seif.defensetimetabling.commands.DefenseSessionCommand;
 import com.seif.defensetimetabling.converters.DefenseSessionToDefenseSessionCommand;
 import com.seif.defensetimetabling.repositories.DefenseSessionRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class DefenseSessionJpaService implements DefenseSessionService {
 
     private DefenseSessionRepository defenseSessionRepository;
