@@ -20,4 +20,9 @@ public class DefensesInterval {
     private Semester semester;
     @OneToMany(mappedBy = "defensesInterval")
     private Set<UnitOfTime> unitsOfTime = new HashSet<>();
+
+    public void addSemester(Semester semester) {
+        this.semester = semester;
+        semester.getDefensesIntervals().add(this);
+    }
 }
