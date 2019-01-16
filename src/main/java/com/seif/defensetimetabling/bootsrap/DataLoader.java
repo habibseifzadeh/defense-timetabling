@@ -66,6 +66,7 @@ public class DataLoader implements CommandLineRunner {
         defenseSession.setDate(LocalDate.of(2019, 1, 14));
 
         defenseSession.addStudent(yaghoubi);
+        defenseSession.setTitle("Use text mining to suggest reviewers for a defense session");
         defenseSession.addSupervisor(seifzadeh);
         defenseSession.addExternalReviewer(naderi);
         defenseSession.addInternalReviewer(nadimi);
