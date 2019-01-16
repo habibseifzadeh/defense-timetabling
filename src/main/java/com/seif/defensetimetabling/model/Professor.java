@@ -1,6 +1,7 @@
 package com.seif.defensetimetabling.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,6 +9,8 @@ import java.util.Set;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"leaveTimes", "supervisorSessions", "advisorSessions",
+        "coordinatorSessions", "externalReviewerSessions", "internalReviewerSessions"})
 public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,4 +34,14 @@ public class Professor {
     private Set<DefenseSession> externalReviewerSessions = new HashSet<>();
     @OneToMany(mappedBy = "internalReviewer")
     private Set<DefenseSession> internalReviewerSessions = new HashSet<>();
+
+    public void addPreferences(Preferences preferences) {
+        this.preferences = preferences;
+        preferences.setProfessor(this);
+    }
+
+    public void addLeaveTime(LeaveTime leaveTime) {
+        leaveTimes.add(leaveTime);
+        leaveTime.setProfessor(this);
+    }
 }

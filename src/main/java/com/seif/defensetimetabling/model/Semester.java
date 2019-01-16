@@ -18,4 +18,5 @@ public class Semester {
 
     @OneToMany(mappedBy = "semester")
     private Set<DefensesInterval> defensesIntervals = new HashSet<>();
+
 }

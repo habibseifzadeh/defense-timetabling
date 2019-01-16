@@ -1,11 +1,13 @@
 package com.seif.defensetimetabling.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "professor")
 public class Preferences {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
