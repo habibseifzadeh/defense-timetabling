@@ -3,7 +3,7 @@ package com.seif.defensetimetabling.controllers;
 import com.seif.defensetimetabling.services.DefenseSessionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class IndexController {
@@ -14,7 +14,7 @@ public class IndexController {
         this.defenseSessionService = defenseSessionService;
     }
 
-    @RequestMapping({"", "/", "/index"})
+    @GetMapping({"", "/", "/index"})
     public String getIndex(Model model) {
 
         //TODO defense sessions must be sorted based on date and time

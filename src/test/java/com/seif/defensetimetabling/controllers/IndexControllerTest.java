@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-public class ControllersTest {
+public class IndexControllerTest {
 
     @Mock
     private DefenseSessionService defenseSessionService;
@@ -29,7 +29,7 @@ public class ControllersTest {
     }
 
     @Test
-    public void testIndexPageOfIndexController() throws Exception {
+    public void testIndexPage() throws Exception {
         //when
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
 
