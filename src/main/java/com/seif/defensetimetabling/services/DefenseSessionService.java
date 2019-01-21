@@ -6,5 +6,5 @@ import java.util.Set;
 
 public interface DefenseSessionService {
 
-    public Set<DefenseSessionCommand> findAll();
+    Set<DefenseSessionCommand> findAll();
 }

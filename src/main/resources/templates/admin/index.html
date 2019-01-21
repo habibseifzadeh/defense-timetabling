@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout">
 <div th:fragment="content">
-    This is the main page of the user admin....
+    <table class="table table-striped table-bordered" th:each="semester : ${semesters}">
+        <thead class="table-primary" style="text-align: center">
+            <th>Id</th>
+            <th th:width="300px">Name</th>
+            <th colspan="3">Operations</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${semester.id}">semester id</td>
+            <td th:text="${semester.name}">semester name</td>
+            <td><a th:href="@{/admin/semester/view}">View</a> </td>
+            <td><a th:href="@{/admin/semester/update}">Update</a></td>
+            <td><a th:href="@{/admin/semester/delete}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
 </html>

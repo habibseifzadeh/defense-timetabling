@@ -1,8 +1,10 @@
 package com.seif.defensetimetabling.controllers;
 
+import com.seif.defensetimetabling.services.SemesterService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -12,6 +14,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 public class AdminControllerTest {
+
+    @Mock
+    private SemesterService semesterService;
 
     @InjectMocks
     private AdminController adminController;

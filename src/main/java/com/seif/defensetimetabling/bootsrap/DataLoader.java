@@ -152,6 +152,9 @@ public class DataLoader implements CommandLineRunner {
         Semester semester = new Semester();
         semester.setName("971");
 
+        Semester semester2 = new Semester();
+        semester.setName("962");
+
         DefensesInterval interval = new DefensesInterval();
         interval.setStartDate(LocalDate.of(2019, 1,1));
         interval.setEndDate((LocalDate.of(2019, 1, 30)));
@@ -183,6 +186,7 @@ public class DataLoader implements CommandLineRunner {
         interval.addUnitOfTime(sixthTime);
 
         semesterRepository.save(semester);
+        semesterRepository.save(semester2);
         defensesIntervalRepository.save(interval);
         unitOfTimeRepository.save(firstTime);
         unitOfTimeRepository.save(secondTime);
