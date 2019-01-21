@@ -153,7 +153,7 @@ public class DataLoader implements CommandLineRunner {
         semester.setName("971");
 
         Semester semester2 = new Semester();
-        semester.setName("962");
+        semester2.setName("962");
 
         DefensesInterval interval = new DefensesInterval();
         interval.setStartDate(LocalDate.of(2019, 1,1));
